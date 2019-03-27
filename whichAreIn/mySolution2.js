@@ -4,4 +4,4 @@ function inArray(array1,array2){
         return word2.indexOf(word1) !== -1;
         })
     }).sort();
-    }
+}

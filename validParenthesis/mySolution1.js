@@ -18,4 +18,4 @@ function validParentheses(parens){
     // Return false if there are open characters that haven't been closed.
     // Otherwise it is valid.
     return open.length === 0;
-    }
+}
