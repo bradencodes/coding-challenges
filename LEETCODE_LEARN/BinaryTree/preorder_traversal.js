@@ -21,5 +21,6 @@ var preorderTraversal = function(root) {
         if (node.left) helper(node.left);
         if (node.right) helper(node.right);
     }
+    helper(root);
     return result;
 };
