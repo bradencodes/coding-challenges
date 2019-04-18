@@ -7,10 +7,10 @@
 
 // My Implementation
 function rotateMatrix(matrix){
-    let rightBound = 1; //1
-    let bottomBound = Math.floor(matrix.length); //1
-    for (let r = 0 ; r <= bottomBound ; r++){ //0
-      for (let c = r ; c < matrix.length - rightBound ; c++){ //0
+    let rightBound = 1;
+    let bottomBound = Math.floor(matrix.length);
+    for (let r = 0 ; r <= bottomBound ; r++){
+      for (let c = r ; c < matrix.length - rightBound ; c++){
         [ 
           matrix[r][c], //point1
           matrix[c][matrix.length-1-r], //point2
