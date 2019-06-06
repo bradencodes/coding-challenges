@@ -1,37 +1,38 @@
 // === Chapter 10 Sorting and Searching ===
 
 /*
-    Sorted Merge: You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write a method to merge B into A in sorted order. 
+    Group Anagrams: Write a method to sort an array of strings so that all the anagrams are next to each other. 
 */
 
-// My Implementation
-function getLastValIndex(array){
-    let p = array.length-1;
-    while(array[p] === null) p--;
-    return p;
-}
+// // My Implementation
+// function Sob(string){
+//   this.s = string;
+//   this.sS = string.split("").sort().join("");
+// }
 
-function sortedMerge(a, b){
-    let pA = getLastValIndex(a);
-    let pB = b.length-1;
-    let sI = a.length-1;
+// function groupAnagrams(array){
+//   let result = array.map(string => new Sob(string));
+//   let sortFunc = (a,b) => a.sS > b.sS;
+//   result = result.sort(sortFunc);
 
-    while (pB >= 0){
-        let aVal = a[pA];
-        let bVal = b[pB];
-        if(aVal > bVal){
-            a[sI] = aVal;
-            pA--;
-        }else{
-            a[sI] = bVal;
-            pB--;
-        }
-        sI--;
+//   return result.map(sob => sob.s);
+// }
+
+// console.log(groupAnagrams(["cdb","abc","bcd","bca", "a", "ab", "ba"]));
+
+// Book Revision
+function groupAnagrams(array) {
+    let hash = {};
+    for (let i = 0 ; i < array.length ; i++) {
+        let sortedWord = array[i].split("").sort().join("");
+        if(hash[sortedWord] !== undefined) hash[sortedWord].push(array[i]);
+        else hash[sortedWord] = [array[i]];
     }
-    return a;
+
+    let result = [];
+    Object.keys(hash).forEach(group => result = result.concat(hash[group]));
+
+    return result;
 }
 
-let a = [1,2,7,null];
-let b = [0];
-
-console.log(sortedMerge(a,b));
+console.log(groupAnagrams(["cdb","abc","bcd","bca", "a", "ab", "ba"]));
