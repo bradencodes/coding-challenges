@@ -10,9 +10,11 @@
 const fill = (screen, point, color, original = screen[point[0]][point[1]]) => {
   if (original === color) return screen;
 
+  // row and column
   let r = point[0],
     c = point[1];
 
+  //stop the function if the pixel is offscreen or is not the orignal color to be changed
   if (
     typeof screen[r] === 'undefined' ||
     typeof screen[r][c] === 'undefined' ||
@@ -20,6 +22,7 @@ const fill = (screen, point, color, original = screen[point[0]][point[1]]) => {
   )
     return;
 
+  // change the color of the current pixel, and try to fill in adjacent pixels
   screen[r][c] = color;
   fill(screen, [r - 1, c], color, original);
   fill(screen, [r + 1, c], color, original);
@@ -29,6 +32,7 @@ const fill = (screen, point, color, original = screen[point[0]][point[1]]) => {
   return screen;
 };
 
+// test
 let screen = [
   [1, 1, 1, 0, 1],
   [1, 0, 2, 0, 1],
